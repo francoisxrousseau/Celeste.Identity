@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,12 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <Folder Include="Features\Commands\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="13.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Celeste.Identity.Common\Celeste.Identity.Common.csproj" />
     <ProjectReference Include="..\Celeste.Identity.Data\Celeste.Identity.Data.csproj" />
-    <ProjectReference Include="..\Celeste.Identity.Service\Celeste.Identity.Application.csproj" />
   </ItemGroup>
 
 </Project>

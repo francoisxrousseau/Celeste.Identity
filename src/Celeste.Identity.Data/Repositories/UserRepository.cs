@@ -1,6 +1,6 @@
 ﻿namespace Celeste.Identity.Data.Repositories;
 
-using Celeste.Identity.Common.Repositories;
+using Celeste.Identity.Core.Repositories;
 using Celeste.Identity.Data.Documents;
 using Microsoft.AspNetCore.Identity;
 using System;

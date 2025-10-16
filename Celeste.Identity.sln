@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Celeste.Identity.Api", "src
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Celeste.Identity.Service", "src\Celeste.Identity.Service\Celeste.Identity.Service.csproj", "{542C9D24-BECC-4D9C-AB0F-1D4450C2C532}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Celeste.Identity.Application", "src\Celeste.Identity.Service\Celeste.Identity.Application.csproj", "{542C9D24-BECC-4D9C-AB0F-1D4450C2C532}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Celeste.Identity.Data", "src\Celeste.Identity.Data\Celeste.Identity.Data.csproj", "{71F08E2A-7F40-47A5-A7D3-15AD74DF9749}"
 EndProject

@@ -1,4 +1,4 @@
-﻿namespace Celeste.Identity.Common.Repositories;
+﻿namespace Celeste.Identity.Core.Repositories;
 
 /// <summary>
 ///     The user repository interface.

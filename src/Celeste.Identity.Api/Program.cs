@@ -1,4 +1,5 @@
 using Celeste.Identity.Data.Installers;
+using Celeste.Identity.Application.Installers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.InstallDatabase(builder.Configuration);
+builder.Services.RegisterRequestHandlers();
 
 var app = builder.Build();
 
