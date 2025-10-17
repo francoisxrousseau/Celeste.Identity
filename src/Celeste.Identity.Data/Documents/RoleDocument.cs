@@ -8,7 +8,7 @@ using System;
 ///     The Role document.
 /// </summary>
 [CollectionName("roles")]
-public class Role : MongoIdentityRole<Guid>
+public class RoleDocument : MongoIdentityRole<Guid>
 {
 
 }

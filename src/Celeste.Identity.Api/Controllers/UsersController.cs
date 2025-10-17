@@ -19,7 +19,15 @@ public class UsersController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpGet("{id}")]
+    /// <summary>
+    ///     Get a specific user by id.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    [ProducesResponseType(typeof(UserResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    [HttpGet("{id:guid}")]
     public async Task<ActionResult<UserResponse>> GetUser(Guid id, CancellationToken cancellationToken)
     {
         var users = await _mediator.Send(new GetUserQuery(id), cancellationToken);

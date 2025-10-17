@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 ///     The User document.
 /// </summary>
 [CollectionName("users")]
-public class User : MongoIdentityUser<Guid>
+public class UserDocument : MongoIdentityUser<Guid>
 {
     /// <summary>
     ///     The creation date.
