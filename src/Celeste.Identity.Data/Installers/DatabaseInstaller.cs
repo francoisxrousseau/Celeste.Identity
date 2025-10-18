@@ -2,7 +2,9 @@
 
 using AspNetCore.Identity.MongoDbCore.Models;
 using Celeste.Identity.Core.Options;
+using Celeste.Identity.Core.Repositories;
 using Celeste.Identity.Data.Documents;
+using Celeste.Identity.Data.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson;
@@ -41,6 +43,6 @@ public static class DatabaseInstaller
                 dbOptions.Name
             );
 
-        return services;
+        return services.AddScoped<IUserRepository, UserRepository>();
     }
 }

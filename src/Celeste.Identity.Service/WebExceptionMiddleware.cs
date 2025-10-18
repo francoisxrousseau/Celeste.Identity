@@ -3,6 +3,7 @@
 using Celeste.Identity.Application.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Text.Json;
 
