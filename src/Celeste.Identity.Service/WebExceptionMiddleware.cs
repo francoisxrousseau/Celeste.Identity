@@ -3,7 +3,6 @@
 using Celeste.Identity.Application.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Text.Json;
 
@@ -47,6 +46,11 @@ public class ExceptionHandlingMiddleware
         {
             _logger.LogWarning(ex, $"Bad request : '{ex.Message}'.");
             await WriteErrorResponse(context, HttpStatusCode.BadRequest, ex.Message);
+        }
+        catch (ConflictException ex)
+        {
+            _logger.LogWarning(ex, $"Conflict : '{ex.Message}'.");
+            await WriteErrorResponse(context, HttpStatusCode.Conflict, ex.Message);
         }
         //catch (UnauthorizedException ex)
         //{

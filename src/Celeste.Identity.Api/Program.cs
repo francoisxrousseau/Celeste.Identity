@@ -17,6 +17,7 @@ builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen()
     .InstallDatabase(builder.Configuration)
+    .AddDataMapping()
     .RegisterRequestHandlers()
     .AddValidatorsFromAssemblyContaining<Program>();
 

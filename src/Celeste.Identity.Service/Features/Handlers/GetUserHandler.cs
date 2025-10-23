@@ -6,9 +6,6 @@ using Celeste.Identity.Common.Responses;
 using Celeste.Identity.Core.Repositories;
 using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -41,7 +38,7 @@ public class GetUserHandler : IRequestHandler<GetUserQuery, UserResponse>
     {
         _ = request ?? throw new ArgumentNullException(nameof(request));
 
-        var user = _userRepository.GetById(request.UserId, cancellationToken);
+        var user = _userRepository.GetByIdAsync(request.UserId, cancellationToken);
 
         if (user == null)
             throw new NotFoundException(nameof(request.UserId), request.UserId.ToString());

@@ -14,7 +14,27 @@ public interface IUserRepository
     /// <param name="id"></param>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
-    Task<User> GetById(
+    Task<User> GetByIdAsync(
         Guid id,
+        CancellationToken cancellationToken);
+
+    /// <summary>
+    ///     Gets a user by its unique email.
+    /// </summary>
+    /// <param name="email"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<User> GetByEmailAsync(
+        string email,
+        CancellationToken cancellationToken);
+
+    /// <summary>
+    ///     Create the specified user.
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<Guid> CreateAsync(
+        User user,
         CancellationToken cancellationToken);
 }
