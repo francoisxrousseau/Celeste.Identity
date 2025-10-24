@@ -2,7 +2,9 @@ using Celeste.Identity.Api.Validators;
 using Celeste.Identity.Application;
 using Celeste.Identity.Application.Installers;
 using Celeste.Identity.Data.Installers;
+using Celeste.Identity.Data.Mapping;
 using FluentValidation;
+using Celeste.Identity.Application.Mapping;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +19,11 @@ builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen()
     .InstallDatabase(builder.Configuration)
-    .AddDataMapping()
+    .AddAutoMapper(cfg =>
+    {
+        cfg.ConfigureDomainMappings();
+        cfg.ConfigureDataMappings();
+    })
     .RegisterRequestHandlers()
     .AddValidatorsFromAssemblyContaining<Program>();
 

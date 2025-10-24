@@ -37,7 +37,14 @@ public static class DatabaseInstaller
         });
         
         services
-            .AddIdentity<UserDocument, MongoIdentityRole<Guid>>()
+            .AddIdentity<UserDocument, MongoIdentityRole<Guid>>(options =>
+            {
+                options.Password.RequiredLength = 5;
+                options.Password.RequireDigit = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+
+            })
             .AddMongoDbStores<UserDocument, MongoIdentityRole<Guid>, Guid>(
                 dbOptions.ConnectionString,
                 dbOptions.Name

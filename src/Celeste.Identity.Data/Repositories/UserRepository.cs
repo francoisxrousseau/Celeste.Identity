@@ -55,7 +55,7 @@ public class UserRepository(
 
         var userDocument = _mapper.Map<UserDocument>(user);
 
-        var result = await _userManager.CreateAsync(userDocument);
+        var result = await _userManager.CreateAsync(userDocument, user.Password);
 
         if (result.Errors.Any())
             throw new InvalidOperationException($"Failed to create user: {string.Join(", ", result.Errors.Select(e => e.Description))}");

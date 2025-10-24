@@ -3,10 +3,6 @@
 using AspNetCore.Identity.MongoDbCore.Models;
 using MongoDbGenericRepository.Attributes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 /// <summary>
 ///     The User document.
@@ -14,11 +10,6 @@ using System.Threading.Tasks;
 [CollectionName("users")]
 public class UserDocument : MongoIdentityUser<Guid>
 {
-    /// <summary>
-    ///     The creation date.
-    /// </summary>
-    public DateTime CreationDate { get; set; }
-
     /// <summary>
     ///  The last login date.
     /// </summary>

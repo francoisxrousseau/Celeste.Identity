@@ -21,8 +21,18 @@ public class DatabaseOptions
     public string Name { get; set; }
 
     /// <summary>
+    ///     The database user.
+    /// </summary>
+    public string User { get; set; }
+
+    /// <summary>
+    ///     The user database password.
+    /// </summary>
+    public string Password { get; set; }
+
+    /// <summary>
     ///     The database connection string.
     /// </summary>
-    public string ConnectionString => $"mongodb://{Host}:{Port}";
+    public string ConnectionString => $"mongodb://{User}:{Password}@{Host}:{Port}";
 
 }

@@ -5,14 +5,14 @@ using Celeste.Identity.Core.Domain;
 using Celeste.Identity.Data.Documents;
 
 /// <summary>
-///     The AutoMapper profile for PatientProfile mapping.
+///     The AutoMapper profile for PatientProfile database mapping.
 /// </summary>
-public class PatientProfileProfile : Profile
+public class PatientProfileDocumentProfile : Profile
 {
     /// <summary>
-    ///     Initialize a new instance of the <see cref="PatientProfileProfile"/> class.
+    ///     Initialize a new instance of the <see cref="PatientProfileDocumentProfile"/> class.
     /// </summary>
-    public PatientProfileProfile()
+    public PatientProfileDocumentProfile()
     {
         //<-- Document to Domain Model Mapping -->
         CreateMap<UserDocument, User>().ReverseMap();

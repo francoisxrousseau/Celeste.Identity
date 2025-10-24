@@ -1,5 +1,6 @@
 ﻿namespace Celeste.Identity.Application.Features.Handlers;
 
+using AutoMapper;
 using Celeste.Identity.Application.Exceptions;
 using Celeste.Identity.Application.Features.Queries;
 using Celeste.Identity.Common.Responses;
@@ -12,17 +13,13 @@ using System.Threading.Tasks;
 /// <summary>
 ///     The query handler for <see cref="GetUserQuery"/>.
 /// </summary>
-public class GetUserHandler : IRequestHandler<GetUserQuery, UserResponse>
+public class GetUserHandler(
+    IUserRepository userRepository,
+    IMapper mapper)
+    : IRequestHandler<GetUserQuery, UserResponse>
 {
-    private readonly IUserRepository _userRepository;
-
-    /// <summary>
-    /// </summary>
-    /// <param name="userRepository"></param>
-    public GetUserHandler(IUserRepository userRepository)
-    {
-        _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
-    }
+    private readonly IUserRepository _userRepository = userRepository ?? throw new ArgumentNullException(nameof(userRepository));
+    private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
 
     /// <summary>
     ///     Handles the <see cref="GetUserQuery"/> request.
@@ -32,19 +29,19 @@ public class GetUserHandler : IRequestHandler<GetUserQuery, UserResponse>
     /// <returns></returns>
     /// <exception cref="ArgumentNullException"></exception>
     /// <exception cref="NotFoundException"></exception>
-    public Task<UserResponse> Handle(
+    public async Task<UserResponse> Handle(
         GetUserQuery request,
         CancellationToken cancellationToken)
     {
         _ = request ?? throw new ArgumentNullException(nameof(request));
 
-        var user = _userRepository.GetByIdAsync(request.UserId, cancellationToken);
+       var user = await _userRepository.GetByIdAsync(request.UserId, cancellationToken);
 
         if (user == null)
             throw new NotFoundException(nameof(request.UserId), request.UserId.ToString());
 
-        //TODO : Map User domain model to UserResponse
+        var userResponse = _mapper.Map<UserResponse>(user);
 
-        return Task.FromResult(new UserResponse());
+        return userResponse;
     }
 }

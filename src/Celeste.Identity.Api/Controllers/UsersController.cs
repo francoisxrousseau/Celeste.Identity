@@ -44,7 +44,7 @@ public class UsersController(IMediator mediator) : ControllerBase
     [ProducesResponseType(typeof(UserResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status409Conflict)]
-    [HttpGet]
+    [HttpPost]
     public async Task<ActionResult<UserResponse>> CreateUser(
         [FromBody] CreateUserModel parameters,
         CancellationToken cancellationToken)

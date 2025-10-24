@@ -1,10 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Celeste.Identity.Common.Responses;
 
-namespace Celeste.Identity.Common.Responses;
+/// <summary>
+///     The response repreentation of the user.
+/// </summary>
 public class UserResponse
 {
+    /// <summary>
+    ///     The username of the user.
+    /// </summary>
+    public string UserName { get; set; }
+
+    /// <summary>
+    ///     The email of the user.
+    /// </summary>
+    public string Email { get; set; }
 }
