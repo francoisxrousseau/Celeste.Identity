@@ -17,11 +17,6 @@ public class CreateUserModelValidator : AbstractValidator<CreateUserModel>
             .NotEmpty().WithMessage("Email address is required")
             .EmailAddress().WithMessage("A valid email is required");
 
-        RuleFor(x => x.UserName)
-            .NotEmpty().WithMessage("User name is required")
-            .MinimumLength(3).WithMessage("User name must be at least 3 characters long")
-            .MaximumLength(50).WithMessage("User name must not exceed 30 characters");
-
         RuleFor(x => x.Password)
             .NotEmpty().WithMessage("Password is required")
             .MinimumLength(3).WithMessage("UPassword must be at least 5 characters long")

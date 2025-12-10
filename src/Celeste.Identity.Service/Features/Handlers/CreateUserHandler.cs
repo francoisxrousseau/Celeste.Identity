@@ -38,7 +38,6 @@ public class CreateUserHandler(
         if (await _userRepository.GetByEmailAsync(request.Email, cancellationToken) != null)
             throw new ConflictException("The user with the specified email already exists", nameof(request.Email), request.Email);
 
-        //TODO - validate  user name
         var user = _mapper.Map<User>(request);
 
         var userId = await _userRepository.CreateAsync(user, cancellationToken);

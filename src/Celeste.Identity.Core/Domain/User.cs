@@ -7,6 +7,7 @@ public class User
 {
     /// <summary>
     ///     The username of the user.
+    ///     Expected to be the same as the email.
     /// </summary>
     public string UserName { get; set; }
 

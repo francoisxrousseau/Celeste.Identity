@@ -49,7 +49,25 @@ public class UsersController(IMediator mediator) : ControllerBase
         [FromBody] CreateUserModel parameters,
         CancellationToken cancellationToken)
     {
-        var users = await _mediator.Send(new CreateUserCommand(parameters.UserName, parameters.Email, parameters.Password), cancellationToken);
+        var users = await _mediator.Send(new CreateUserCommand(parameters.Email, parameters.Password), cancellationToken);
         return Ok(users);
+    }
+
+    /// <summary>
+    ///     Get a specific user by id.
+    /// </summary>
+    /// <param name="parameters"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    [ProducesResponseType(typeof(UserResponse), StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    [HttpDelete]
+    public async Task<ActionResult<UserResponse>> DeleteUser(
+        [FromBody] DeleteUserParameters parameters,
+        CancellationToken cancellationToken)
+    {
+        await _mediator.Send(new DeleteUserCommand(parameters.UserId), cancellationToken);
+        return NoContent();
     }
 }

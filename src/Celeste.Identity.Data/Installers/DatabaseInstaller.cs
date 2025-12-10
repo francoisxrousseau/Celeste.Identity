@@ -43,7 +43,6 @@ public static class DatabaseInstaller
                 options.Password.RequireDigit = true;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = true;
-
             })
             .AddMongoDbStores<UserDocument, MongoIdentityRole<Guid>, Guid>(
                 dbOptions.ConnectionString,

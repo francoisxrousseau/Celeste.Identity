@@ -19,7 +19,7 @@ public class PatientProfileDomainProfile : Profile
         CreateMap<User, UserResponse>().ReverseMap();
 
         //<-- Command to Domain Model Mapping -->
-        CreateMap<CreateUserCommand, User>().ReverseMap();
-
+        CreateMap<CreateUserCommand, User>()
+            .ForMember(d => d.UserName, opt => opt.MapFrom(src => src.Email));
     }
 }
